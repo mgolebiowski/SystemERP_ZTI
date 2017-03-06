@@ -22,3 +22,22 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.banner{
+    margin-top: 15px;
+}
+
+.panel-default{
+    min-height: 250px;
+}
+.big-icon{
+    margin-top:30px;
+    font-size:120px;
+}
+.dep-text{
+    margin-top: -20px;
+}
+
+.dep-cont:hover{
+    color: cornflowerblue;
+}
