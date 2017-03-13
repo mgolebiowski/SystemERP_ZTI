@@ -7,7 +7,7 @@
             <h1>eERP System</h1>
             <p class="lead">Please choose a department.</p>
             <p>
-                If you want to read more about eERP (or see the source code) go 
+                If you want to read more about eERP (or see the source code) go
                 <a href="https://github.com/mgolebiowski/SystemERP_ZTI">here</a>
             </p>
         </div>
@@ -21,28 +21,36 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-3 ">
+    <div class="col-md-3">
         <div class="col-md-12 panel panel-default dep-cont">
-            <p class="big-icon text-center"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></p>
-            <h3 class="text-center dep-text">Orders</h3>
+            <a href="@Url.Action("Index", "Orders")">
+                <p class="big-icon text-center"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></p>
+                <h3 class="text-center dep-text">Orders</h3>
+            </a>
         </div>
     </div>
     <div class="col-md-3 ">
         <div class="col-md-12 panel panel-default dep-cont">
-            <p class="big-icon text-center"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></p>
-            <h3 class="text-center dep-text">Storage</h3>
+            <a href="@Url.Action("Index", "Storage")">
+                <p class="big-icon text-center"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></p>
+                <h3 class="text-center dep-text">Storage</h3>
+            </a>
         </div>
     </div>
     <div class="col-md-3 ">
         <div class="col-md-12 panel panel-default dep-cont">
-            <p class="big-icon text-center"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></p>
-            <h3 class="text-center dep-text">Production</h3>
+            <a href="@Url.Action("Index", "Production")">
+                <p class="big-icon text-center"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></p>
+                <h3 class="text-center dep-text">Production</h3>
+            </a>
         </div>
     </div>
     <div class="col-md-3 ">
         <div class="col-md-12 panel panel-default dep-cont">
-            <p class="big-icon text-center"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
-            <h3 class="text-center dep-text">Sales</h3>
+            <a href="@Url.Action("Index", "Sales")">
+                <p class="big-icon text-center"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></p>
+                <h3 class="text-center dep-text">Sales</h3>
+            </a>
         </div>
     </div>
 </div>

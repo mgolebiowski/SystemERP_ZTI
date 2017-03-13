@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -22,10 +22,13 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Orders", "About", "Home")</li>
-                    <li>@Html.ActionLink("Storage", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Production", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Sales", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Orders", "Index", "Orders")</li>
+                    <li>@Html.ActionLink("Storage", "Index", "Storage")</li>
+                    <li>@Html.ActionLink("Production", "Index", "Production")</li>
+                    <li>@Html.ActionLink("Sales", "Index", "Sales")</li>
+                    @if (User.Identity.IsAuthenticated) {
+                        <li>@Html.ActionLink("Users Management", "Contact", "Home")</li>
+                    }
 
                 </ul>
                 @Html.Partial("_LoginPartial")
