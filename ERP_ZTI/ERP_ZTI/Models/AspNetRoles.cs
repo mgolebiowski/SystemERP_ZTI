@@ -12,22 +12,18 @@ namespace ERP_ZTI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Products
+    public partial class AspNetRoles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Products()
+        public AspNetRoles()
         {
-            this.Sales = new HashSet<Sales>();
-            this.ProductsQueue = new HashSet<ProductsQueue>();
+            this.AspNetUsers = new HashSet<AspNetUsers>();
         }
     
-        public int ProductID { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
-        public string Amount { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sales> Sales { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductsQueue> ProductsQueue { get; set; }
+        public virtual ICollection<AspNetUsers> AspNetUsers { get; set; }
     }
 }

@@ -13,7 +13,10 @@ namespace ERP_ZTI.Controllers
         // GET: Sales
         public ActionResult Index()
         {
-            return View();
+            var sales = from s in db.Sales
+                            select s;
+
+            return View(sales.AsEnumerable());
         }
 
         // GET: Customers
@@ -24,5 +27,6 @@ namespace ERP_ZTI.Controllers
 
             return View(customers.AsEnumerable());
         }
+
     }
 }

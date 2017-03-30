@@ -1,35 +1,43 @@
-﻿@{
+﻿@model IEnumerable<ERP_ZTI.Models.ProductsQueue>
+@{
     ViewBag.Title = "eERP - Production";
 }
 
-<h2>Production table</h2>
-<table class="table table-striped table-hover">
-    <thead>
+<h2>Production</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.QueueID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Products.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>Lp</th>
-            <th>A</th>
-            <th>B</th>
-            <th>C</th>
+            <td>
+                @Html.DisplayFor(modelItem => item.QueueID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Products.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.ActionLink("Sent to storage", "Close", new { id = item.QueueID })
+            </td>
         </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-    </tbody>
+    }
+
 </table>

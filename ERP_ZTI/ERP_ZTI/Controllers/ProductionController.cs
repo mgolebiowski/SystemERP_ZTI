@@ -8,10 +8,14 @@ namespace ERP_ZTI.Controllers
 {
     public class ProductionController : Controller
     {
-        // GET: Production
+        Models.ERP_DBEntities db = new Models.ERP_DBEntities();
+        // GET: Production - kolejka
         public ActionResult Index()
         {
-            return View();
+            var queue = from q in db.ProductsQueue
+                        select q;
+
+            return View(queue.AsEnumerable());
         }
     }
 }
