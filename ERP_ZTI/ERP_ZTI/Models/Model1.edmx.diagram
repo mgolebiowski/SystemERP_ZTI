@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="931aa0c0a5c54bd5943044ac61d71efc" Name="Diagram1" ZoomLevel="57">
+      <Diagram DiagramId="931aa0c0a5c54bd5943044ac61d71efc" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="ERP_DBModel.Contractors" Width="1.5" PointX="1.875" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ERP_DBModel.Customers" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ERP_DBModel.IProducts" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
@@ -16,7 +16,7 @@
         <AssociationConnector Association="ERP_DBModel.FK_Sales_ToTable" ManuallyRouted="false" />
         <AssociationConnector Association="ERP_DBModel.FK_Orders_ToTable" ManuallyRouted="false" />
         <AssociationConnector Association="ERP_DBModel.FK_Sales_ToTable_1" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ERP_DBModel.C__MigrationHistory" Width="1.5" PointX="11" PointY="6.25" />
+        <EntityTypeShape EntityType="ERP_DBModel.C__MigrationHistory" Width="1.5" PointX="12.125" PointY="7.125" />
         <EntityTypeShape EntityType="ERP_DBModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="9.5" />
         <EntityTypeShape EntityType="ERP_DBModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="8" />
         <EntityTypeShape EntityType="ERP_DBModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="10.75" />

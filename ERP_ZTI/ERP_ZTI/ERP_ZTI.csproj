@@ -316,6 +316,7 @@
     <Content Include="Views\HR\Index.cshtml" />
     <Content Include="Views\HR\Create.cshtml" />
     <Content Include="Views\HR\Manage.cshtml" />
+    <Content Include="Views\Storage\Change.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

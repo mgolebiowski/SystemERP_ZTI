@@ -24,6 +24,8 @@ namespace ERP_ZTI.Models
         public int ProductID { get; set; }
         public string Name { get; set; }
         public string Amount { get; set; }
+        public string PlaceX { get; set; }
+        public Nullable<int> PlaceY { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sales> Sales { get; set; }

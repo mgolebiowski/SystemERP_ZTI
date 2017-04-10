@@ -111,6 +111,8 @@
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nchar" MaxLength="30" />
           <Property Name="Amount" Type="nchar" MaxLength="10" />
+          <Property Name="PlaceX" Type="char" MaxLength="1" />
+          <Property Name="PlaceY" Type="int" />
         </EntityType>
         <EntityType Name="ProductsQueue">
           <Key>
@@ -370,6 +372,8 @@
           <Property Name="Amount" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_ToTable_1" FromRole="Products" ToRole="Sales" />
           <NavigationProperty Name="ProductsQueue" Relationship="ERP_DBModel.FK_ProductsQueue_ToTable" FromRole="Products" ToRole="ProductsQueue" />
+          <Property Name="PlaceX" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PlaceY" Type="Int32" />
         </EntityType>
         <EntityType Name="Sales">
           <Key>
@@ -655,6 +659,8 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="ERP_DBModel.Products">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="PlaceY" ColumnName="PlaceY" />
+                <ScalarProperty Name="PlaceX" ColumnName="PlaceX" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
