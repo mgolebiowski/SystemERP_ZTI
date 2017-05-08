@@ -27,6 +27,22 @@ namespace ERP_ZTI.Controllers
 
             return View(customers.AsEnumerable());
         }
-
+        // GET: Create
+        public ActionResult Create()
+        {
+            ViewBag.nextQueueId = db.ProductsQueue.Count();
+            ViewBag.products = db.Products.ToList();
+            return View();
+        }
+        // POST Create
+        [HttpPost, ActionName("Create")]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreatePost([Bind(Include = "QueueID,ProductID,Amount")] Models.ProductsQueue productEntry)
+        {
+            productEntry.QueueID= db.ProductsQueue.Count();
+            db.ProductsQueue.Add(productEntry);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

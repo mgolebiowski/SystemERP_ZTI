@@ -31,10 +31,12 @@ namespace ERP_ZTI.Controllers
         // POST Change/ID
         [HttpPost, ActionName("Change")]
         [ValidateAntiForgeryToken]
-        public ActionResult ChangePost(int? id)
+        public ActionResult ChangePost(int? id, string placeX, int placeY)
         {
             var productToUpdate = db.Products.Find(id);
-            TryUpdateModel(productToUpdate, "", new string[] { "Name, Amount, PlacX, PlaceY" });
+            productToUpdate.PlaceX = placeX;
+            productToUpdate.PlaceY = placeY;
+            TryUpdateModel(productToUpdate, "", new string[] { "Name, Amount, PlaceX, PlaceY" });
             db.SaveChanges();
             return RedirectToAction("Index");
         }

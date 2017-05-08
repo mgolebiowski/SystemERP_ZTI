@@ -17,5 +17,14 @@ namespace ERP_ZTI.Controllers
 
             return View(queue.AsEnumerable());
         }
+        // GET: Close
+        public ActionResult Close(int? id)
+        {
+            
+            //ToDo
+            // W momencie wyslania do magazynu nalezy dodac odpowiedni amount do produktu w magazynie
+
+            return View();
+        }
     }
 }
