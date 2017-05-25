@@ -1,35 +1,42 @@
 ﻿@{
-    ViewBag.Title = "eERP - Orders";
+    ViewBag.Title = "Index";
 }
 
-<h2>Orders table</h2>
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>Lp</th>
-            <th>A</th>
-            <th>B</th>
-            <th>C</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-    </tbody>
-</table>
+<h2>What do you want to do?</h2>
+@if (ViewBag.zeroA.Count == 0 && ViewBag.smallA.Count == 0)
+{
+    <div class="alert alert-success" role="alert">
+      You don't have any notifications!
+    </div>
+}
+else
+{
+
+    foreach (ERP_ZTI.Models.Products product in ViewBag.zeroA)
+    {
+        <div class="alert alert-danger" role="alert">there is no <strong>@product.Name</strong> in storage!</div>
+    }
+
+    foreach (ERP_ZTI.Models.Products product in ViewBag.smallA)
+    {
+        <div class="alert alert-warning" role="alert">there is only small amount of <strong>@product.Name</strong> in storage!</div>
+    }
+}
+<div class="row">
+    <div class="col-md-3">
+        <div class="col-md-12 panel panel-default dep-cont">
+            <a href="@Url.Action("Orders", "Orders")">
+                <p class="big-icon text-center"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span></p>
+                <h3 class="text-center dep-text">See Orders</h3>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-3 ">
+        <div class="col-md-12 panel panel-default dep-cont">
+            <a href="@Url.Action("Contractors", "Orders")">
+                <p class="big-icon text-center"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></p>
+                <h3 class="text-center dep-text">See Contractors</h3>
+            </a>
+        </div>
+    </div>
+</div>
