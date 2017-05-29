@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "SalesSend";
+}
+@if(ViewBag.error != "") { 
+    <div class="alert alert-danger" role="alert">ViewBag.error</div>
+}
+else
+{
+    <div class="alert alert-success" role="alert">Done!</div>
+}
+<h3>@Html.ActionLink("Go back", "Index", "Sales")</h3>

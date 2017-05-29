@@ -13,9 +13,6 @@ namespace ERP_ZTI
         // GET Orders
         public ActionResult Index()
         {
-            var notifications = new Models.NotificationModel();
-            ViewBag.zeroA = notifications.zeroAmount;
-            ViewBag.smallA = notifications.smallAmount;
             return View();
         }
 

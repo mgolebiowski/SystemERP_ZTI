@@ -3,45 +3,48 @@
     ViewBag.Title = "eERP - Sales";
 }
 
-<h3>@Html.ActionLink("Go to customers list","Customers", "Sales")</h3>
+@if (ViewBag.zeroA.Count == 0 && ViewBag.smallA.Count == 0)
+{
+    <div class="alert alert-success" role="alert">
+        You don't have any notifications!
+    </div>
+}
+else
+{
 
-<h2>Sales:</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Customer @Html.DisplayNameFor(model => model.Customers.Name)
-        </th>
-        <th>
-            Product @Html.DisplayNameFor(model => model.Products.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Amount)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+    foreach (ERP_ZTI.Models.Products product in ViewBag.zeroA)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customers.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Products.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.SalesId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.SalesId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.SalesId })
-            </td>
-        </tr>
+        <div class="alert alert-danger" role="alert">there is no <strong>@product.Name</strong> in storage!</div>
     }
 
-</table>
+    foreach (ERP_ZTI.Models.Products product in ViewBag.smallA)
+    {
+        <div class="alert alert-warning" role="alert">there is only small amount of <strong>@product.Name</strong> in storage!</div>
+    }
+}
+<div class="row">
+    <div class="col-md-3 ">
+        <div class="col-md-12 panel panel-default dep-cont">
+            <a href="@Url.Action("Sales", "Sales")">
+                <p class="big-icon text-center"><span class="glyphicon glyphicon-send" aria-hidden="true"></span></p>
+                <h3 class="text-center dep-text">Sales list</h3>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="col-md-12 panel panel-default dep-cont">
+            <a href="@Url.Action("Customers", "Sales")">
+                <p class="big-icon text-center"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></p>
+                <h3 class="text-center dep-text">Customers list</h3>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-3 ">
+        <div class="col-md-12 panel panel-default dep-cont">
+            <a href="@Url.Action("Create", "Sales")">
+                <p class="big-icon text-center"><span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></p>
+                <h3 class="text-center dep-text">Add item to production queue</h3>
+            </a>
+        </div>
+    </div>
+</div>

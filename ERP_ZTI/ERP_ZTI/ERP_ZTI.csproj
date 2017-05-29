@@ -322,6 +322,9 @@
     <Content Include="Views\Orders\Orders.cshtml" />
     <Content Include="Views\Orders\Contractors.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Sales\Sales.cshtml" />
+    <Content Include="Views\Sales\SalesSend.cshtml" />
+    <Content Include="Views\Sales\SalesCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

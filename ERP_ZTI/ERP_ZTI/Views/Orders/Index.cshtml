@@ -2,26 +2,6 @@
     ViewBag.Title = "Index";
 }
 
-<h2>What do you want to do?</h2>
-@if (ViewBag.zeroA.Count == 0 && ViewBag.smallA.Count == 0)
-{
-    <div class="alert alert-success" role="alert">
-      You don't have any notifications!
-    </div>
-}
-else
-{
-
-    foreach (ERP_ZTI.Models.Products product in ViewBag.zeroA)
-    {
-        <div class="alert alert-danger" role="alert">there is no <strong>@product.Name</strong> in storage!</div>
-    }
-
-    foreach (ERP_ZTI.Models.Products product in ViewBag.smallA)
-    {
-        <div class="alert alert-warning" role="alert">there is only small amount of <strong>@product.Name</strong> in storage!</div>
-    }
-}
 <div class="row">
     <div class="col-md-3">
         <div class="col-md-12 panel panel-default dep-cont">

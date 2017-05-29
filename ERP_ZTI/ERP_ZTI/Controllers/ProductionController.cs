@@ -20,10 +20,20 @@ namespace ERP_ZTI.Controllers
         // GET: Close
         public ActionResult Close(int? id)
         {
-            
-            //ToDo
-            // W momencie wyslania do magazynu nalezy dodac odpowiedni amount do produktu w magazynie
 
+            var prod = from p in db.ProductsQueue
+                       where(p.QueueID == id)
+                       select p;
+            int prodAmount = prod.First().Amount.Value;
+
+            var productToUpdate = db.Products.Find(prod.First().ProductID);
+            int intAmount;
+            int.TryParse(productToUpdate.Amount, out intAmount);
+            intAmount += prodAmount;
+            productToUpdate.Amount = intAmount.ToString();
+            TryUpdateModel(productToUpdate, "", new string[] { "Name, Amount, PlaceX, PlaceY" });
+            db.ProductsQueue.Remove(prod.First());
+            db.SaveChanges();
             return View();
         }
     }
