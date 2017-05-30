@@ -325,6 +325,8 @@
     <Content Include="Views\Sales\Sales.cshtml" />
     <Content Include="Views\Sales\SalesSend.cshtml" />
     <Content Include="Views\Sales\SalesCreate.cshtml" />
+    <Content Include="Views\Sales\CreateCustomer.cshtml" />
+    <Content Include="Views\Sales\EditCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

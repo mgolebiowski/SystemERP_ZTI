@@ -37,6 +37,49 @@ namespace ERP_ZTI.Controllers
 
             return View(customers.AsEnumerable());
         }
+        // GET: CreateCustomer
+        public ActionResult CreateCustomer()
+        {
+            ViewBag.nextCustomerID = db.Customers.ToArray().LastOrDefault().CustomerID + 1;
+            return View();
+        }
+        // POST CreateCustomer
+        [HttpPost, ActionName("CreateCustomer")]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateCustomerPost([Bind(Include = "CustomerID,Name,Adress,Phone,NIP")] Models.Customers customerEntry)
+        {
+            customerEntry.CustomerID = db.Customers.ToArray().LastOrDefault().CustomerID + 1;
+            db.Customers.Add(customerEntry);
+            db.SaveChanges();
+            return RedirectToAction("Customers");
+        }
+        // GET: EditCustomer
+        public ActionResult EditCustomer(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(404);
+            }
+            var customer = db.Customers.Find(id);
+            return View(customer);
+        }
+        // POST CreateCustomer
+        [HttpPost, ActionName("EditCustomer")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditCustomerPost(int? id, string name, string adress, string phone, string NIP)
+        {
+            //ToDo
+            var customer = db.Customers.Find(id);
+            customer.Name = name;
+            customer.Adress = adress;
+            customer.Phone = phone;
+            customer.NIP = NIP;
+            var result = TryUpdateModel(customer);
+            if(result) db.SaveChanges();
+            
+            return RedirectToAction("Customers");
+        }
+
         // GET: Create
         public ActionResult Create()
         {
@@ -61,9 +104,7 @@ namespace ERP_ZTI.Controllers
             var prod = from s in db.Sales
                        where (s.SalesId == id)
                        select s;
-            var prodAmount = prod.First().Products.Amount;
-            int sellAmount;
-            int.TryParse(prodAmount, out sellAmount);
+            var sellAmount = prod.First().Amount;
 
             var productToUpdate = db.Products.Find(prod.First().ProductID);
 
@@ -77,7 +118,7 @@ namespace ERP_ZTI.Controllers
                 db.Sales.Remove(prod.First());
                 db.SaveChanges();
 
-                return RedirectToAction("Index");
+                return View();
             }
             else
             {

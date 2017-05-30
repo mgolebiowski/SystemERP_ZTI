@@ -2,8 +2,8 @@
 @{
     ViewBag.Title = "SalesSend";
 }
-@if(ViewBag.error != "") { 
-    <div class="alert alert-danger" role="alert">ViewBag.error</div>
+@if(ViewBag.error == "There is not enough products in storage.") { 
+    <div class="alert alert-danger" role="alert">@ViewBag.error</div>
 }
 else
 {
