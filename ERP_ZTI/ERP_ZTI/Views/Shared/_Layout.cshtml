@@ -26,12 +26,12 @@
                     <li>@Html.ActionLink("Storage", "Index", "Storage")</li>
                     <li>@Html.ActionLink("Production", "Index", "Production")</li>
                     <li>@Html.ActionLink("Sales", "Index", "Sales")</li>
-                    @if (User.Identity.IsAuthenticated) {
-                        <li>@Html.ActionLink("Users Management", "Contact", "Home")</li>
-                    }
-
+                    
                 </ul>
-                @Html.Partial("_LoginPartial")
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
             </div>
         </div>
     </div>

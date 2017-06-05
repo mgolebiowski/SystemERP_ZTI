@@ -22,7 +22,7 @@ namespace ERP_ZTI.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Do you need help?";
 
             return View();
         }

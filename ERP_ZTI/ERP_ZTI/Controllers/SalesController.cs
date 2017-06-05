@@ -83,7 +83,14 @@ namespace ERP_ZTI.Controllers
         // GET: Create
         public ActionResult Create()
         {
-            ViewBag.nextQueueId = db.ProductsQueue.ToArray().LastOrDefault().QueueID + 1;
+            if(db.ProductsQueue.ToArray().Count() == 0)
+            {
+                ViewBag.nextQueueId = 0;
+            }
+            else
+            {
+                ViewBag.nextQueueId = db.ProductsQueue.ToArray().LastOrDefault().QueueID + 1;
+            }
             ViewBag.products = db.Products.ToList();
             return View();
         }
@@ -92,7 +99,15 @@ namespace ERP_ZTI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreatePost([Bind(Include = "QueueID,ProductID,Amount")] Models.ProductsQueue productEntry)
         {
-            productEntry.QueueID = db.ProductsQueue.ToArray().LastOrDefault().QueueID + 1;
+            
+            if (db.ProductsQueue.ToArray().Count() == 0)
+            {
+                productEntry.QueueID = 0;
+            }
+            else
+            {
+                productEntry.QueueID = db.ProductsQueue.ToArray().LastOrDefault().QueueID + 1;
+            }
             db.ProductsQueue.Add(productEntry);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -159,6 +174,19 @@ namespace ERP_ZTI.Controllers
             db.Sales.Add(productEntry);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        //GET Delete
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(404);
+            }
+            var customer = db.Customers.Find(id);
+            db.Customers.Remove(customer);
+            db.SaveChanges();
+            return RedirectToAction("Customers");
         }
     }
 }

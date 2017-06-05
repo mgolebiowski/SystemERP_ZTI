@@ -40,5 +40,39 @@ namespace ERP_ZTI.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        // GET: IntStorage
+        public ActionResult IntStorage()
+        {
+            var storage = from s in db.IProducts
+                          select s;
+            return View(storage);
+        }
+
+        // GET Edit/ID
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(404);
+            }
+            var storage = db.IProducts.Find(id);
+            ViewBag.contrList = db.Contractors.AsEnumerable();
+            return View(storage);
+        }
+
+        // POST Edit/ID
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPost(int? id, string name, int amount, int contractorID)
+        {
+            var productToUpdate = db.IProducts.Find(id);
+            productToUpdate.Name = name;
+            productToUpdate.Amount = amount;
+            productToUpdate.ContractorID = contractorID;
+
+            TryUpdateModel(productToUpdate);
+            db.SaveChanges();
+            return RedirectToAction("IntStorage");
+        }
     }
 }

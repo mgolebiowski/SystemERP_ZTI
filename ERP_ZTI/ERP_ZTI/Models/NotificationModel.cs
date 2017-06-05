@@ -9,6 +9,8 @@ namespace ERP_ZTI.Models
     {
         public List<Models.Products> smallAmount { get; set; }
         public List<Models.Products> zeroAmount { get; set; }
+        public List<Models.IProducts> i_smallAmount { get; set; }
+        public List<Models.IProducts> i_zeroAmount { get; set; }
 
         //Constructor
         public NotificationModel()
@@ -16,6 +18,8 @@ namespace ERP_ZTI.Models
             //Instantiate the lists
             this.smallAmount = new List<Products>();
             this.zeroAmount = new List<Products>();
+            this.i_smallAmount = new List<IProducts>();
+            this.i_zeroAmount = new List<IProducts>();
             //Get amounts of all products
             Models.ERP_DBEntities db = new Models.ERP_DBEntities();
             var products = from p in db.Products
@@ -33,6 +37,22 @@ namespace ERP_ZTI.Models
                 else if(amount < 5)
                 {
                     this.smallAmount.Add(product);
+                }
+            }
+
+            var iproducts = from p in db.IProducts
+                           select p;
+            //Fulfill the propeties of class  
+            foreach (IProducts product in iproducts)
+            {
+                if (product.Amount == 0)
+                {
+                    this.i_zeroAmount.Add(product);
+
+                }
+                else if (product.Amount < 5)
+                {
+                    this.i_smallAmount.Add(product);
                 }
             }
         }
